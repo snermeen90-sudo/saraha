@@ -1,11 +1,14 @@
 import ConnectionDB from './DB/connectionDB.js'
 import express from 'express'
 import userRouter from './DB/modules/users/user.controller.js'
+import cors from "cors"
 const app =express()
 const port =3000
 
 
 const bootstrap = async ()=>{
+
+     app.use(cors())
      app.use(express.json())
      await ConnectionDB()
      app.get("/",(req,res)=>res.status(201).json({message:"welcome to saraha"}))
